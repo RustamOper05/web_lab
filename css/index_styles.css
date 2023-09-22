@@ -1,10 +1,10 @@
 body {
     background-color: #1E2027;
     color: white;
-    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
-strong {
+h1 {
     color: #D44B30;
 }
 
@@ -33,6 +33,7 @@ code {
         height: 100vh;
         top: 0;
         left: 0;
+        box-shadow: 10px 5px 5px black;
     }
 
     main {
@@ -179,7 +180,7 @@ td, th {
     border-width: 1px;
     font-family: Arial, sans-serif;
     font-size: 14px;
-    font-weight: normal;
+    font-weight: 400;
     overflow: hidden;
     padding: 10px 5px;
     word-break: normal;
@@ -188,7 +189,7 @@ td, th {
 .tg .tg-e889 {
     background-color: #1e2027;
     color: #d44b30;
-    font-weight: bold;
+    font-weight: 700;
     text-align: left;
     vertical-align: bottom
 }
