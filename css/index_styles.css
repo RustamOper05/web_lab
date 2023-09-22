@@ -232,3 +232,17 @@ nav ul a li:hover{
     border-radius: 5px;
     padding: 5px;
 }
+
+#XB{
+    color: #FFC0CB;
+    width: 250px;
+    padding: 10px;
+}
+
+#TEKST{
+    text-indent: 20px;
+    text-decoration: underline;
+    font-style: italic;
+    font-size: 110%;
+    padding: 10%;
+}
