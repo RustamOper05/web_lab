@@ -223,6 +223,7 @@ span {
 }
 
 .nav-hrefs{
+    position: absolute;
     color: #d44b30;
     text-decoration: none;
 }
@@ -248,3 +249,28 @@ nav ul a li:hover{
     text-transform: uppercase;
     line-height: 110%;
 }
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.header {
+    background-color: #f2f2f2;
+    padding: 10px;
+}
+
+.item-even {
+    background-color: pink;
+    padding: 10px;
+}
+
+.item {
+    background-color: blue;
+    padding: 10px;
+}
+
+/*.item:nth-child(odd) {*/
+/*    background-color: #ffffff;*/
+/*    padding: 10px;*/
+/*}*/
