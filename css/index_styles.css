@@ -258,11 +258,13 @@ nav ul a li:hover{
 .header {
     background-color: #f2f2f2;
     padding: 10px;
+    color: black;
 }
 
 .item-even {
-    background-color: pink;
+    background-color: yellow;
     padding: 10px;
+    color: black;
 }
 
 .item {
