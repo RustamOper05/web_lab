@@ -12,6 +12,7 @@
 <header>
     <h1>Сервис для оценки залоговой стоимости типовых квартир</h1>
     <script src="js/script.js"></script>
+    <script src="js/script_table.js"></script>
 </header>
 <main>
     <section>
@@ -20,10 +21,6 @@
             <nav>
                 <h3 id="nav_header">Навигация</h3>
                 <ul>
-                    <!--                    <a href="#" class="nav-hrefs"><li>Главная</li></a>-->
-                    <!--                    <a href="#" class="nav-hrefs"><li>Инфо-графика</li></a>-->
-                    <!--                    -->
-                    <!--                    <a href="#" class="nav-hrefs"><li>Прогноз залоговой стоимости квартиры</li></a>-->
                     <li class="nav_li"><a href="index.html">Главная</a></li>
                     <li class="nav_li"><a href="info_graph.html">Инфо-графика</a></li>
                     <li class="nav_li"><a href="predict.html">Прогноз залоговой стоимости квартиры</a></li>
@@ -31,6 +28,19 @@
             </nav>
         </aside>
     </section>
+    <h1>Квартиры</h1>
+    <form id="apartmentForm">
+        <label for="area">Площадь:</label>
+        <input type="text" id="area" name="area"><br><br>
+        <label for="rooms">Комнатность:</label>
+        <input type="text" id="rooms" name="rooms"><br><br>
+        <label for="floors">Этажность дома:</label>
+        <input type="text" id="floors" name="floors"><br><br>
+        <label for="floor">Этаж квартиры:</label>
+        <input type="text" id="floor" name="floor"><br><br>
+        <input type="submit" value="Добавить">
+    </form>
+    <div id="apartmentList"></div>
 </main>
 <footer>
     <p id="loadTime"></p>
