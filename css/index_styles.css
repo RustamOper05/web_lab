@@ -106,11 +106,6 @@ code {
         height: 20px;
     }
 
-    table {
-        visibility: collapse;
-        width: 100%; /* Изменение ширины таблицы на 100% */
-    }
-
     #data-ex-t {
         visibility: collapse;
     }
@@ -135,28 +130,6 @@ p {
 /*    height: 100px;*/
 /*}*/
 
-table {
-    width: 100%; /* Установка начальной ширины таблицы на 100% */
-    border-collapse: collapse; /* Объединение границ ячеек */
-}
-
-td, th {
-    border: 1px solid black; /* Установка границ ячеек */
-    padding: 8px; /* Установка отступов внутри ячеек */
-}
-
-/* Медиа-запрос для экранов шириной меньше 600 пикселей */
-@media screen and (max-width: 600px) {
-    table {
-        width: 100%; /* Изменение ширины таблицы на 100% */
-    }
-
-    td, th {
-        display: block; /* Установка блочного отображения ячеек */
-        width: 100%; /* Изменение ширины ячеек на 100% */
-        box-sizing: border-box; /* Учет границ и отступов внутри ячеек */
-    }
-}
 
 .tg {
     border-collapse: collapse;
@@ -296,6 +269,21 @@ a {
     color: white;
 }
 
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #d44b30;
+    color: white;
+}
 
 /*.item:nth-child(odd) {*/
 /*    background-color: #ffffff;*/
