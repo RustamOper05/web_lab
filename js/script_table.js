@@ -1,45 +1,83 @@
 // Получение данных из формы и добавление в таблицу
 // Загрузка данных из LocalStorage и добавление в таблицу
+
 window.addEventListener("load", function() {
+    let table = document.getElementById('ap_table_head');
+    let template = document.getElementById('apartmentTemplate');
+
 // Получение данных из формы и добавление в список
     function addApartment(event) {
         event.preventDefault();
 
-        var area = document.getElementById("area").value;
-        var rooms = document.getElementById("rooms").value;
-        var floors = document.getElementById("floors").value;
-        var floor = document.getElementById("floor").value;
+        let area = document.getElementById("area").value;
+        let rooms = document.getElementById("rooms").value;
+        let floors = document.getElementById("floors").value;
+        let floor = document.getElementById("floor").value;
 
-        var apartment = {
-            area: area,
-            rooms: rooms,
-            floors: floors,
-            floor: floor
+        let apartment = {
+            area,
+            rooms,
+            floors,
+            floor
         };
 
-        var apartmentList = JSON.parse(localStorage.getItem("apartmentList")) || [];
+        let apartmentList = JSON.parse(localStorage.getItem("apartmentList")) || [];
         apartmentList.push(apartment);
         localStorage.setItem("apartmentList", JSON.stringify(apartmentList));
 
         displayApartments();
     }
 
-// Отображение списка квартир
-    function displayApartments() {
-        var apartmentList = JSON.parse(localStorage.getItem("apartmentList")) || [];
-        var html = "<table><tr><th>Площадь</th><th>Комнатность</th><th>Этажность дома</th><th>Этаж квартиры</th></tr>";
+function isNumber(value) {
+    if (typeof value === "string") {
+        return !isNaN(value);
+    }
+}
 
-        for (var i = 0; i < apartmentList.length; i++) {
-            html += "<tr><td>" + apartmentList[i].area + "</td>";
-            html += "<td>" + apartmentList[i].rooms + "</td>";
-            html += "<td>" + apartmentList[i].floors + "</td>";
-            html += "<td>" + apartmentList[i].floor + "</td></tr>";
+    function displayApartments() {
+        let apartmentList = JSON.parse(localStorage.getItem("apartmentList")) || [];
+        
+        if (table.children.length != 0) {
+            while (table.firstChild) {
+                if (table.children.length == 1) {
+                    break;
+                }
+                table.removeChild(table.lastChild);
+            }
         }
 
-        html += "</table>";
-        document.getElementById("apartmentList").innerHTML = html;
+        for (let i = 0; i < apartmentList.length; i++) {
+
+            let сlonedNode = template.content.cloneNode(true);
+            let td = сlonedNode.querySelectorAll("td");
+            if (
+                (apartmentList[i].area) & (apartmentList[i].rooms) & (apartmentList[i].floors) & (apartmentList[i].floor)
+            ) {
+                if (
+                    (!isNumber(apartmentList[i].area)) || (!isNumber(apartmentList[i].rooms)) || (!isNumber(apartmentList[i].floors)) || (!isNumber(apartmentList[i].floor))
+                    ) {
+                    alert("В поля введены не числа")
+                }
+                else{
+                    td[0].textContent  = apartmentList[i].area;
+                    td[1].textContent  = apartmentList[i].rooms;
+                    td[2].textContent  = apartmentList[i].floors;
+                    td[3].textContent  = apartmentList[i].floor;
+        
+                    table.appendChild(сlonedNode);
+                }
+            }
+        }
     }
 
     document.getElementById("apartmentForm").addEventListener("submit", addApartment);
+    document.getElementById("apartmentForm").addEventListener("submit", clearOutput);
     displayApartments();
+
+    function clearOutput() {
+        document.getElementById("area").value = "";
+        document.getElementById("rooms").value = "";
+        document.getElementById("floors").value = "";
+        document.getElementById("floor").value = "";
+    }
 });
