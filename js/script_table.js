@@ -14,25 +14,27 @@ window.addEventListener("load", function() {
         let floors = document.getElementById("floors").value;
         let floor = document.getElementById("floor").value;
 
-        let apartment = {
-            area,
-            rooms,
-            floors,
-            floor
-        };
+        let pattern = /^\d+$/
 
-        let apartmentList = JSON.parse(localStorage.getItem("apartmentList")) || [];
-        apartmentList.push(apartment);
-        localStorage.setItem("apartmentList", JSON.stringify(apartmentList));
+        console.log(pattern.test(area));
 
+        if (!(pattern.test(area) & pattern.test(rooms) & pattern.test(floor) & pattern.test(floors))) {
+            alert("В поля введены не числа");
+        }
+        else {
+            let apartment = {
+                area,
+                rooms,
+                floors,
+                floor
+            };
+
+            let apartmentList = JSON.parse(localStorage.getItem("apartmentList")) || [];
+            apartmentList.push(apartment);
+            localStorage.setItem("apartmentList", JSON.stringify(apartmentList));
+        }
         displayApartments();
     }
-
-function isNumber(value) {
-    if (typeof value === "string") {
-        return !isNaN(value);
-    }
-}
 
     function displayApartments() {
         let apartmentList = JSON.parse(localStorage.getItem("apartmentList")) || [];
@@ -50,23 +52,19 @@ function isNumber(value) {
 
             let сlonedNode = template.content.cloneNode(true);
             let td = сlonedNode.querySelectorAll("td");
-            if (
-                (apartmentList[i].area) & (apartmentList[i].rooms) & (apartmentList[i].floors) & (apartmentList[i].floor)
-            ) {
-                if (
-                    (!isNumber(apartmentList[i].area)) || (!isNumber(apartmentList[i].rooms)) || (!isNumber(apartmentList[i].floors)) || (!isNumber(apartmentList[i].floor))
-                    ) {
-                    alert("В поля введены не числа")
-                }
-                else{
-                    td[0].textContent  = apartmentList[i].area;
-                    td[1].textContent  = apartmentList[i].rooms;
-                    td[2].textContent  = apartmentList[i].floors;
-                    td[3].textContent  = apartmentList[i].floor;
-        
-                    table.appendChild(сlonedNode);
-                }
-            }
+
+            let area_val = apartmentList[i].area;
+            let rooms_val = apartmentList[i].rooms;
+            let floors_val = apartmentList[i].floors;
+            let floor_val = apartmentList[i].floor;
+
+            td[0].textContent  = area_val;
+            td[1].textContent  = rooms_val;
+            td[2].textContent  = floors_val;
+            td[3].textContent  = floor_val;
+
+            table.appendChild(сlonedNode);
+
         }
     }
 
@@ -79,5 +77,11 @@ function isNumber(value) {
         document.getElementById("rooms").value = "";
         document.getElementById("floors").value = "";
         document.getElementById("floor").value = "";
+    }
+
+    function checkString(string){
+        if(typeof string === "string"){
+            return isNaN(string);
+        } 
     }
 });
