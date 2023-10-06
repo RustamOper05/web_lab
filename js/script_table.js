@@ -3,21 +3,21 @@
 window.addEventListener("load", function() {
 // Получение данных из формы и добавление в список
     function addApartment(event) {
-        event.preventDefault();
+        // event.preventDefault();
 
-        var area = document.getElementById("area").value;
-        var rooms = document.getElementById("rooms").value;
+        let area = document.getElementById("area").value;
+        let rooms = document.getElementById("rooms").value;
         var floors = document.getElementById("floors").value;
-        var floor = document.getElementById("floor").value;
+        let floor = document.getElementById("floor").value;
 
-        var apartment = {
-            area: area,
-            rooms: rooms,
-            floors: floors,
-            floor: floor
+        let apartment = {
+            area,
+            rooms,
+            floors,
+            floor
         };
 
-        var apartmentList = JSON.parse(localStorage.getItem("apartmentList")) || [];
+        let apartmentList = JSON.parse(localStorage.getItem("apartmentList")) || [];
         apartmentList.push(apartment);
         localStorage.setItem("apartmentList", JSON.stringify(apartmentList));
 
@@ -26,10 +26,10 @@ window.addEventListener("load", function() {
 
 // Отображение списка квартир
     function displayApartments() {
-        var apartmentList = JSON.parse(localStorage.getItem("apartmentList")) || [];
-        var html = "<table><tr><th>Площадь</th><th>Комнатность</th><th>Этажность дома</th><th>Этаж квартиры</th></tr>";
+        let apartmentList = JSON.parse(localStorage.getItem("apartmentList")) || [];
+        let html = "<table><tr><th>Площадь</th><th>Комнатность</th><th>Этажность дома</th><th>Этаж квартиры</th></tr>";
 
-        for (var i = 0; i < apartmentList.length; i++) {
+        for (let i = 0; i < apartmentList.length; i++) {
             html += "<tr><td>" + apartmentList[i].area + "</td>";
             html += "<td>" + apartmentList[i].rooms + "</td>";
             html += "<td>" + apartmentList[i].floors + "</td>";
