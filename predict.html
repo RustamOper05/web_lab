@@ -31,16 +31,26 @@
     <h1>Квартиры</h1>
     <form id="apartmentForm">
         <label for="area">Площадь:</label>
-        <input type="text" id="area" name="area">
+        <input type="text" id="area" name="area" required>
         <label for="rooms">Комнатность:</label>
-        <input type="text" id="rooms" name="rooms">
+        <input type="text" id="rooms" name="rooms" required>
         <label for="floors">Этажность дома:</label>
-        <input type="text" id="floors" name="floors">
+        <input type="text" id="floors" name="floors" required>
         <label for="floor">Этаж квартиры:</label>
-        <input type="text" id="floor" name="floor">
+        <input type="text" id="floor" name="floor" required>
         <input type="submit" value="Добавить">
     </form>
-    <div id="apartmentList"></div>
+    <div id="apartmentList">
+        <table id="ap_table_head"><tr><th>Площадь</th><th>Комнатность</th><th>Этажность дома</th><th>Этаж квартиры</th></tr>
+        <template id="apartmentTemplate">
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </template>
+    </div>
 </main>
 <footer>
     <p id="loadTime"></p>
