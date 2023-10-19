@@ -88,11 +88,16 @@ code {
         /*width: 200px;*/
         margin-left: 0px;
         border-radius: 10px;
-        padding: 20px;
+        padding: 20px 20px 50px 20px;
         border: 2px solid black;
         /*height: 100px;*/
         /*top: 0;*/
         /*left: 0;*/
+    }
+
+    .nu-tipo-navbar {
+        position: sticky;
+        top: 0;
     }
 
     main {
@@ -104,6 +109,17 @@ code {
         visibility: collapse;
         width: 20px;
         height: 20px;
+    }
+
+    .nav-list-ul {
+        display: flex;
+        gap: 20px;
+    }
+
+    .nav_li {
+        flex: 1 1 0px;
+        flex-grow: 1;
+        padding: 10px;
     }
 
     #data-ex-t {
@@ -223,28 +239,6 @@ nav ul a li:hover{
     line-height: 110%;
 }
 
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-}
-
-.header {
-    background-color: #f2f2f2;
-    padding: 10px;
-    color: black;
-}
-
-.item-even {
-    background-color: rgb(255, 0, 0);
-    padding: 10px;
-    color: black;
-}
-
-.item {
-    background-color: rgb(0, 0, 251);
-    padding: 10px;
-}
-
 .nav_li:hover {
     background-color: #d44b30;
     color: black;
@@ -269,21 +263,57 @@ a {
     color: white;
 }
 
-table {
+#grid-table {
+    min-width: 60vw;
+    width: auto;
+    flex: 1;
+    display: grid;
     border-collapse: collapse;
-    width: 100%;
+    grid-template-columns: 
+    minmax(60px, 1fr)
+    minmax(60px, 1.67fr)
+    minmax(60px, 1.67fr);
 }
 
-th, td {
-    border: 1px solid black;
-    padding: 8px;
+thead, tbody, .grid-table-tr {
+    display: contents;
+}
+
+.grid-table-th, .grid-table-td {
+    padding: 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.grid-table-th {
+    top: 0;
+    background: #d44b30;
     text-align: left;
+    font-weight: normal;
+    font-size: 1.1rem;
+    color: white;
 }
 
-th {
-    background-color: #d44b30;
-    color: white;
-    padding-top: 15px;
+.resize-handle {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: black;
+    opacity: 0;
+    width: 3px;
+    cursor: col-resize;
+}
+
+.grid-table-td {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: #808080;
+}
+
+.grid-table-tr:nth-child(even) td {
+    background: #f8f6ff;
 }
 
 #apartmentForm label {
