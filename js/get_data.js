@@ -8,6 +8,12 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
 }
 
+async function fetchUsers(randomLimit) {
+    const response = await fetch(`https://jsonplaceholder.typicode.com/users?_start=1&_limit=${randomLimit}`);
+    const data = await response.json();
+    return data;
+}
+
 window.addEventListener("load", function() {
     const fetchButton = document.getElementById('fetchButton');
     const loadingIndicator = document.getElementById('loadingIndicator');
@@ -26,17 +32,16 @@ window.addEventListener("load", function() {
 
     loadingIndicator.style.display = 'block';
 
+    let randomLimit = getRandomInt(5, 10)
+
     setTimeout(() => {
-        fetch('https://jsonplaceholder.typicode.com/users')
-            .then(response => response.json())
+        fetchUsers(randomLimit)
             .then(json => {
                 loadingIndicator.style.display = 'none';
                 json.forEach(user => {
-                    if (user.id % getRandomInt(1, 3) == 0) {
-                        const listItem = document.createElement('li');
-                        listItem.textContent = user.name + "    " + user.email;
-                        dataList.appendChild(listItem);
-                    }
+                    const listItem = document.createElement('li');
+                    listItem.textContent = user.name + "    " + user.email;
+                    dataList.appendChild(listItem);
                 });
             })
             .catch(error => {
