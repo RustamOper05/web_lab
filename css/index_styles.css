@@ -2,6 +2,7 @@ body {
     background-color: #1E2027;
     color: white;
     font-family: 'Roboto', sans-serif;
+    --swiper-theme-color: #D44B30;
 }
 
 h1 {
@@ -356,7 +357,7 @@ thead, tbody, .grid-table-tr {
 
 #fetchButton {
     background-color: #D44B30;
-    color: white;
+    color: #3a3e4f;
     padding: 10px 20px;
     border: none;
     cursor: pointer;
@@ -366,4 +367,25 @@ thead, tbody, .grid-table-tr {
 
 #fetchButton:hover {
     background-color: #D44B30;
+}
+
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #3a3e4f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
